@@ -6,7 +6,13 @@ using namespace std;
 class Solution {
 public:
 	bool isBipartite(int V, vector<int>adj[]) {
-
+		//the mistake which I was making was that I was marking it visited when the neighbours were being seen
+		//but I wasn't assigning them any color. The problem which arises here is that, suppose a node(z) is already visited
+		// (and is being evaluated by some other node x), I have no means to check whether color has been alloted to them or not, and if it isn't been alloted why is it that it's not alloted?
+		//should be alloted when I am visiting that node.
+		//parent color ko le k chalne ki hi zaruart nai hai . Kyu? It is not important that we don't color it with a wrong color. We can color it with a wrong color.
+		//Wrong color karo. Jab pata chale ki wrong color kardiye ho tab report kardo.
+		//parentColor ko le k chalne se tum wrong color karne se bach rahe the.
 		int vis[V] = {0};
 		int color[V] = {0};
 		for (int i = 0; i < V; i++) {
