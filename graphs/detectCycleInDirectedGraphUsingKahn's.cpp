@@ -32,7 +32,7 @@ public:
             q.pop();
             ans.push_back(node);
             for (auto it : adj[node]) {
-                indegree[it]--;
+                indegree[it]--;//here I don't need to worry about "oh I am not visiting the it node and just decreasing the indegree. No, why? Because if its indegree is not 0, then there must be a node which is visiting the it node in near future. Also, if the indegree of it becomes 0, I will push it in the queue."
                 if (indegree[it] == 0)
                     q.push(it);
             }
