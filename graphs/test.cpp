@@ -4,18 +4,17 @@ using namespace std;
 #define ll long long int
 #define pb emplace_back
 void solve() {
-
+	cout << "hello" << endl;
+	return;
 }
 int main(int argc, char const *argv[])
 {
 
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r" , stdin);
-	freopen("output.txt", "w", stdout);
-#endif
 
-	int t = 1;
-	//cin >> t;
+	cout << "hi" << endl;
+	cout << "Vedant" << endl;
+	int t = 2;
+	cin >> t;
 	while (t-- > 0) {
 		solve();
 	}
