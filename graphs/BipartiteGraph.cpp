@@ -112,10 +112,6 @@ int isBipartite(int V, vector<int> adj[]) {
 //{ Driver Code Starts.
 int main() {
 	int tc;
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r" , stdin);
-	freopen("output.txt", "w", stdout);
-#endif
 
 	cin >> tc;
 	while (tc--) {

@@ -11,6 +11,11 @@ class Solution {
 public:
     //so the main logic is that of comparing the two adjacent strings. The first character where they differ is where I get my first dependency that this comes before that.
     //Hence I first construct a graph containing the dependencies and then apply topo sort to it.
+
+
+
+    //NOTE: The two places where this algo won't work is where you have words like ['abcd','abc']. Basically higher length numbers are before.
+    //NOTE: It will also not work when there is a cyclic dependency. For eg: ['abc', 'bca', 'adc']
     string findOrder(string dict[], int N, int K) {
         vector<int> inDegree(26, 0);
         vector<int> adj[26];
@@ -30,7 +35,11 @@ public:
                     int surrNode = word2[j] - 97;
                     vis[node] = 1;
                     vis[surrNode] = 1;
-                    adj[node].push_back(surrNode); //Note that this might result in duplicacy. Which means that a node can have the same adjacent node twice. Why doesn't it affect the execution of the program? Because later you calculate its inDegree twice and when you visit after some time using q and traversal, you will traverse twice and decrement twice and then add it to the q.(Line 54)
+                    adj[node].push_back(surrNode); //Note that this might result in duplicacy. Which means that a node can have
+                    //the same adjacent node twice. Why doesn't it affect the execution of the program?
+                    //Because later you calculate its inDegree twice and when you visit
+                    //after some time using q and traversal, you will traverse twice and decrement twice and then add it to the q.(Line 54)
+                    //Example: bbbbc bba aaaaac
                     break;
                 }
                 j++;
