@@ -1,3 +1,6 @@
+#include<bits/stdc++.h>
+using namespace std;
+
 class Solution {
 public:
     /*
@@ -29,5 +32,44 @@ public:
             return ans;
         }
     */
-    int trap
+    int trap(vector<int>& heights) {
+
+        int n = heights.size();
+        int leftMax = heights[0], rightMax = heights[n - 1];
+        int l = 0, r = n - 1;
+        if (n <= 2) return 0;
+        int ans = 0, value;
+        while (l <= r) {
+            if (leftMax <= rightMax) {
+                value = leftMax - heights[l];
+                if (value >= 0) {
+                    ans += value;
+                } else {
+                    leftMax = heights[l];
+                }
+                l++;
+            } else {
+                value = rightMax - heights[r];
+                if (value >= 0) {
+                    ans += value;
+                } else {
+                    rightMax = heights[r];
+                }
+                r--;
+            }
+        }
+        return ans;
+    }
 };
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<int> heights(n);
+    for (int i = 0; i < n; i++)
+        cin >> heights[i];
+    Solution obj;
+    cout << obj.trap(heights);
+    return 0;
+}
